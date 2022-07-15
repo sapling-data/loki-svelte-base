@@ -11,7 +11,7 @@ const injectDevMainPlugin = () => ({
         tag: 'script',
         injectTo: 'body',
         attrs: {
-          src: '/src/main.js',
+          src: '/src/main.ts',
           type: 'module',
         },
       },
