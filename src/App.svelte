@@ -28,26 +28,31 @@
 
   if (import.meta.env.MODE === 'development') onMount(() => navigate(basepath + '/', { replace: true }))
   export let navMode: string = lokiConfig.navMode;
+  export let appName: string = lokiConfig.appName;
+  import { QueryClient, QueryClientProvider } from '@sveltestack/svelte-query'
+  const queryClient = new QueryClient()
 </script>
 
-<Router>
-  <div>
-    <div class="h-screen flex overflow-hidden bg-white">
-      {#if navMode === 'sidebar'}
-        <Sidebar navItems={navItems} basepath={basepath} />
-      {/if}
-      <div class="flex flex-col w-0 flex-1 h-full overflow-hidden">
-        {#if navMode === 'navbar'}
-          <Navbar navItems={navItems} basepath={basepath} />
+<QueryClientProvider client={queryClient}>
+  <Router>
+    <div>
+      <div class="h-screen flex overflow-hidden bg-white">
+        {#if navMode === 'sidebar'}
+          <Sidebar appName={appName} navItems={navItems} basepath={basepath} />
         {/if}
-        <main id="main" class="flex-1 relative overflow-y-auto focus:outline-none bg-gray-50">
-          <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-            {#each navItems as item }
-              <Route path={basepath + item.href} component={item.component} />
-            {/each}
-          </div>
-        </main>
+        <div class="flex flex-col w-0 flex-1 h-full overflow-hidden">
+          {#if navMode === 'navbar'}
+            <Navbar navItems={navItems} basepath={basepath} />
+          {/if}
+          <main id="main" class="flex-1 relative overflow-y-auto focus:outline-none bg-gray-50">
+            <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+              {#each navItems as item }
+                <Route path={basepath + item.href} component={item.component} />
+              {/each}
+            </div>
+          </main>
+        </div>
       </div>
     </div>
-  </div>
-</Router>
+  </Router>
+</QueryClientProvider>
