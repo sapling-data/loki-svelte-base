@@ -22,7 +22,7 @@
   })
 </script>
 
-<div class="flex flex-col gap-7 items-center">
+<div class="flex flex-col gap-7 items-center py-7">
   <h1 class="text-3xl font-bold" id="message">{messageValue}</h1>
   <div>
     <input
