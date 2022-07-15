@@ -6,7 +6,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "check": "svelte-check --tsconfig ./tsconfig.json"
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "loki": "vite build && node uploadToLoki.mjs"
   },
   "devDependencies": {
     "@rgossiaux/svelte-headlessui": "^1.0.2",
@@ -26,5 +27,8 @@
     "tslib": "^2.4.0",
     "typescript": "^4.6.4",
     "vite": "^3.0.0"
+  },
+  "dependencies": {
+    "@sveltestack/svelte-query": "^1.6.0"
   }
 }
