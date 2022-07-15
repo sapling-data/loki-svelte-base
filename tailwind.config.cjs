@@ -2,6 +2,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 export default {
+  mode: 'jit',
   plugins: [],
   theme: {
     extend: {
