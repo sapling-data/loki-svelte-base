@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
   import { Link, Router } from 'svelte-routing';
   import { Icon } from '@steeze-ui/svelte-icon';
   import CloudMenu from './CloudMenu.svelte';
@@ -26,7 +25,7 @@
 
 <div class="bg-gray-800 flex flex-col w-56" id="sidebar">
   <div class="flex flex-col h-0 flex-1">
-    <div class="flex items-center flex-shrink-0 p-4">
+    <div class="flex items-center flex-shrink-0 p-4 mx-auto space-x-2">
       <CloudMenu />
       <img class="mx-auto block h-8 w-auto" src="https://saplingdata.com/wp-content/themes/sapling/img/sapling-data-logo.svg" alt="Sapling Data" />
     </div>
@@ -85,13 +84,16 @@
         </Transition>
       </Menu>
       <nav class="flex-1 px-2 py-4">
+        <h1>{appName}</h1>
         <Router>
           {#each navItems as item}
             <Link
                     to={basepath + item.href}
                     class="inline-block text-white flex items-center px-2 py-1.5 text-xxs rounded-md"
             >
-              <Icon src={item.icon} theme="outline" class="text-blue-500 block h-4 w-4 mr-2" />
+              {#if item.icon}
+                <Icon src={item.icon} theme="outline" class="text-blue-500 block h-4 w-4 mr-2" />
+              {/if}
               {item.name}
             </Link>
           {/each}
