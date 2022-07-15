@@ -18,6 +18,21 @@ export default defineConfig({
   css: {
     postcss,
   },
+  optimizeDeps: {
+    exclude: [
+      '@sveltestack/svelte-query',
+      'svelte/animate',
+      'svelte/easing',
+      'svelte/internal',
+      'svelte/motion',
+      'svelte/store',
+      'svelte/transition',
+      'svelte',
+      'svelte-hmr/runtime/hot-api-esm.js',
+      'svelte-hmr/runtime/proxy-adapter-dom.js',
+      'svelte-hmr'
+    ]
+  },
   build: {
     rollupOptions: {
       input: {
