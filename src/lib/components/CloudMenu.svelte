@@ -10,7 +10,7 @@
   import { Icon } from '@steeze-ui/svelte-icon';
   import { Cloud, Cube } from '@steeze-ui/heroicons';
 
-  const menuItems = [];
+  const menuItems: ({title: string; summary: string; iconUrl: string; link: string; pageUrns: string[]})[] = [];
   const getMenuItems = async () => {
     const connection = await loki.model.getConnectionByServiceGroup('urn:com:saplingdata:cloudControl:model:serviceGroups:cloudServices');
     const data = await loki.data.query({
@@ -68,17 +68,19 @@
           appHomeUrl = `${cloudControlApp.url}/${appPrefix}`;
           appIconUrl = loki.web.resourceUrl(`${cloudControlApp.urn}!small.png`, { connectionUrn: 'urn:com:saplingdata:cloudControl:model:serviceGroups:cloudServices-ui' });
           menuItems.push({
+            summary: '',
             title: app.name,
             iconUrl: appIconUrl,
             link: appHomeUrl,
-            pageUrns: [],
+            pageUrns: []
           });
         } else if (cloudControlHomePage) {
           menuItems.push({
+            summary: '',
             title: 'Cloud Home',
             iconUrl: loki.web.resourceUrl('urn:com:saplingdata:appBaseOne:app:resources:public!cloudHome.png'),
             link: cc_home_page,
-            pageUrns: [],
+            pageUrns: []
           });
         }
 
@@ -130,7 +132,7 @@
               leave-from-class="transform opacity-100 scale-100"
               leave-to-class="transform opacity-0 scale-95">
     <MenuItems
-            class="origin-top-left absolute left-0 p-1.5 w-auto inline-block
+            class="origin-top-left absolute left-0 mt-2 p-1.5 w-auto inline-block
       rounded-md shadow-lg bg-white ring-1 ring-black
       ring-opacity-5 focus:outline-none max-h-72 overflow-y-auto">
       {#each menuItems as item }
