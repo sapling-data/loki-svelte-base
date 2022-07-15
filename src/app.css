@@ -5,7 +5,3 @@
 a[aria-current="page"] {
   @apply bg-gray-900;
 }
-
-#app {
-  text-align: center;
-}
