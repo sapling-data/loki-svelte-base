@@ -5,3 +5,21 @@
 a[aria-current="page"] {
   @apply bg-gray-900;
 }
+
+.notifications {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.toast {
+  z-index: 9000;
+  flex: 0 0 auto;
+  margin-bottom: 10px;
+}
