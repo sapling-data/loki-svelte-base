@@ -6,6 +6,7 @@
 
   export let type: string;
   export let message: string;
+  export let title: string;
   export let id: string;
   export let dismissable: boolean;
 
@@ -75,34 +76,36 @@
   };
 
   const iconColor = getIconColor(type);
-  const buttonHoverColor = getButtonHoverColor(type);
-  const textColor = getTextColor(type);
-  const backgroundColor = getBackgroundColor(type);
 </script>
 
 <div
-        class="toast rounded-md {backgroundColor} p-4"
         transition:fly={{ x: 100 }}
->
-  <div class="flex">
-    <div class="flex-shrink-0">
-      <Icon src={getIcon(type)} theme="solid" class="h-5 w-5 {iconColor}" />
-    </div>
-    <div class="ml-3">
-      <p class="text-sm font-medium {textColor}">{message}</p>
-    </div>
-    {#if dismissable}
-      <div class="ml-auto pl-3">
-        <div class="-mx-1.5 -my-1.5">
-          <button
-                  on:click={() => notifications.dismiss(id)}
-                  type="button"
-                  class="inline-flex {backgroundColor} rounded-md p-1.5 {iconColor} {buttonHoverColor}">
-            <span class="sr-only">Dismiss</span>
-            <Icon src={X} theme="solid" class="h-5 w-5" />
-          </button>
+        aria-live="assertive"
+        class="w-80 inset-0 flex items-end pointer-events-none sm:items-start">
+  <div class="w-full flex flex-col items-center space-y-4 sm:items-end">
+    <div class="max-w-sm w-full bg-white shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden">
+      <div class="p-4">
+        <div class="flex items-start">
+          <div class="flex-shrink-0">
+            <Icon src={getIcon(type)} theme="solid" class="h-6 w-6 {iconColor}" />
+          </div>
+          <div class="ml-3 w-0 flex-1 pt-0.5">
+            <p class="text-sm font-medium text-gray-900">{title}</p>
+            <p class="mt-1 text-sm text-gray-500">{message}</p>
+          </div>
+          {#if dismissable}
+            <div class="ml-4 flex-shrink-0 flex">
+              <button
+                      on:click={() => notifications.dismiss(id)}
+                      type="button"
+                      class="bg-white rounded-md inline-flex text-gray-400 hover:text-gray-500 focus:outline">
+                <span class="sr-only">Close</span>
+                <Icon src={X} theme="solid" class="h-5 w-5" />
+              </button>
+            </div>
+          {/if}
         </div>
       </div>
-    {/if}
+    </div>
   </div>
 </div>
