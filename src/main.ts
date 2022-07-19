@@ -1,5 +1,6 @@
 import App from "./App.svelte";
 import "./app.css";
+// @ts-ignore
 import Loki from '@sapling-data/loki-javascript-client/dist/es-bundle';
 import lokiConfig from '../loki.config.mjs';
 
@@ -7,6 +8,7 @@ import lokiConfig from '../loki.config.mjs';
 // code is being served in production mode from a Sapling server, this step is not necessary and
 // will be handled by lokiSession and the other libraries that are added on build.
 if (import.meta.env.MODE === 'development') {
+  // @ts-ignore
   lokiConfig.auth = {
     username: import.meta.env.VITE_LOKI_USERNAME,
     password: import.meta.env.VITE_LOKI_PASSWORD,
@@ -50,6 +52,7 @@ loki.environ.addConnection({
 });
 
 const app = new App({
+  // @ts-ignore
   target: document.getElementById("app"),
 });
 
