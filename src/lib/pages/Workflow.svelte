@@ -22,7 +22,7 @@
     <div class="flex w-full relative">
       <h1 class="text-lg font-bold">{$workflow.data.name}</h1>
       {#if $workflow.isFetching}
-        <div class="absolute top-0 right-0">
+        <div class="ml-auto my-auto">
           <LoadingIndicator mode="fetch" itemName="workflow" />
         </div>
       {/if}
