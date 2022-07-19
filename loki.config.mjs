@@ -1,6 +1,6 @@
 export default {
   // The string that you want to inject into the title tag of your page
-  pageTitle: 'Loki Svelte Starter',
+  pageTitle: 'Loki Svelte Base',
   // The Loki app that you plan to deploy to
   appName: process.env.NODE_ENV === 'development' ? 'examples-pg' : 'examples',
   // The app model you are developing for
@@ -16,7 +16,7 @@ export default {
   // The root of your app urn; typically the same as cloudName, but can vary for older apps
   appRoot: 'loki',
   // Set the navigation mode you'd like to use
-  navMode: 'sidebar',
   // Is your app a Sapling internal app or a client app?
   internal: true,
+  baseUrl: '',
 };
