@@ -1,64 +1,92 @@
 <script lang="ts">
-  import lokiConfig from '../loki.config';
-  import type { NavItem } from './types';
   import { onMount } from 'svelte';
+  import { fly } from 'svelte/transition';
   import { Router, Route, navigate } from 'svelte-routing';
   import { QueryClient, QueryClientProvider } from '@sveltestack/svelte-query';
-  import { broadcastQueryClient } from '@sveltestack/svelte-query';
-  import { Bookmark, BookOpen } from '@steeze-ui/heroicons';
-  import Sidebar from "./lib/components/Sidebar.svelte";
-  import Docs from './lib/Docs.svelte';
-  import Navbar from './lib/components/Navbar.svelte';
-  import HelloWorld from './lib/HelloWorld.svelte';
-
+  import Sidebar from './lib/components/navigation/Sidebar.svelte';
+  import Navbar from './lib/components/navigation/Navbar.svelte';
+  import Workflow from './lib/pages/Workflow.svelte';
+  import { appConfig } from './lib/config';
+  const { allowNavToggle, basePath, navItems, navMode, title } = appConfig;
   const queryClient = new QueryClient();
+  $: showSidebar = true;
   onMount(async () => {
-      await broadcastQueryClient({
-          queryClient,
-          broadcastChannel: lokiConfig.appName,
-      })
+    if (import.meta.env.MODE === 'development' && !window.location.href.includes(basePath)) {
+      navigate(basePath + '/', { replace: true });
+    }
   });
-
-  if (import.meta.env.MODE === 'development') onMount(() => navigate(basePath + '/', { replace: true }))
-
-  export let navMode: string = lokiConfig.navMode;
-  export let appTitle: string = lokiConfig.pageTitle;
-  export let basePath: string = import.meta.env.MODE === 'development'
-      ? `/${lokiConfig.appName}/pages/urn/com/${lokiConfig.cloudName}/${lokiConfig.appModelName}/app/pages/${lokiConfig.pageName}/v`
-      : `/${loki.urn.getLastSegment(loki.app.appInstanceUrn)}/pages/urn/com/${lokiConfig.appRoot}/${lokiConfig.appModelName}/app/pages/${lokiConfig.pageName}/v`;
-  export const navItems: NavItem[] = [
-      {
-          name: 'Hello World',
-          href: '/',
-          component: HelloWorld,
-          icon: Bookmark
-      },
-      {
-          name: 'Docs',
-          href: '/docs',
-          component: Docs,
-          icon: BookOpen
-      }
-  ];
+  import { notifications } from './lib/notifications';
+  import Notifications from "./lib/components/Notifications.svelte";
 </script>
 <QueryClientProvider>
   <Router>
-    <div>
-      <div class="h-screen flex overflow-hidden bg-white">
-        {#if navMode === 'sidebar'}
-          <Sidebar appTitle={appTitle} navItems={navItems} basePath={basePath} />
+    <div class="min-h-full flex grow relative">
+      {#if navMode === 'sidebar'}
+        {#if allowNavToggle && !showSidebar}
+          <div
+                  class="fixed bottom-0 left-0" style="z-index: 9000;"
+                  in:fly={{duration: 500, x: -250, opacity: 1}}
+          >
+            <button
+                    on:click={() => showSidebar = !showSidebar}
+                    type="button"
+                    class="rounded-tr-lg border-r border-t border-gray-300 shadow-sm text-gray-800 flex items-center px-2.5 py-2.5 bg-gray-50
+                    text-xxs hover:bg-gray-100 hover:text-gray-900"
+            >
+              <div class="flex my-auto">
+                <svg
+                        class="h-4 w-4 mr-2"
+                        stroke-width="1"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M19 21L5 21C3.89543 21 3 20.1046 3 19L3 5C3 3.89543 3.89543 3 5 3L19 3C20.1046 3 21 3.89543 21 5L21 19C21 20.1046 20.1046 21 19 21Z" stroke="currentColor"  stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M9.5 21V3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M5.5 10L7.25 12L5.5 14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="mr-2">Open sidebar</span>
+              </div>
+            </button>
+          </div>
         {/if}
-        <div class="flex flex-col w-0 flex-1 h-full overflow-hidden">
-          {#if navMode === 'navbar'}
-            <Navbar appTitle={appTitle} navItems={navItems} basePath={basePath} />
-          {/if}
-          <main id="main" class="flex-1 relative overflow-y-auto focus:outline-none bg-gray-50 z-10">
-            <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-              {#each navItems as item }
-                <Route path={basePath + item.href} component={item.component} />
-              {/each}
-            </div>
-          </main>
+        <Sidebar
+                bind:show={showSidebar}
+                {allowNavToggle}
+                {title}
+                {navItems}
+        />
+      {/if}
+      <div class="h-screen flex flex-col grow overflow-hidden">
+        {#if appConfig.navMode === 'navbar'}
+          <Navbar
+                  {title}
+                  {navItems}
+          />
+        {/if}
+        <div class="relative flex-grow w-full py-4 sm:px-6 lg:px-8 overflow-y-auto">
+          <Notifications />
+          <button on:click={() => notifications.send({
+            type: 'info',
+            title: 'Info',
+            message: 'This is an info message',
+            duration: 5000,
+            dismissable: true,
+          })}>
+            Info!
+          </button>
+          {#each navItems as item }
+            <Route
+                    path={item.to}
+                    component={item.component}
+            />
+          {/each}
+          <Route
+                  path={`${basePath}/workflows/:workflowId`}
+                  let:params
+          >
+            <Workflow workflowId={params.workflowId} />
+          </Route>
         </div>
       </div>
     </div>
