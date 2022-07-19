@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { NavItem } from '../../../types';
+import type { NavItem } from '../../types';
 import { Router } from 'svelte-routing';
 import CloudMenu from '../menus/CloudMenu.svelte';
 import UserMenu from '../menus/UserMenu.svelte';

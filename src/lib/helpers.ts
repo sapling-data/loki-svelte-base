@@ -1,4 +1,4 @@
-import type {CloudMenuItem} from "../types";
+import type {CloudMenuItem} from "./types";
 
 export const loadMenu = () => {
   const items: CloudMenuItem[] = [];

@@ -4,7 +4,7 @@ import Welcome from './pages/Welcome.svelte';
 import {BookOpen, Home} from '@steeze-ui/heroicons';
 // @ts-ignore
 import Index from './pages/Index.svelte';
-import type { AppConfig } from '../types';
+import type { AppConfig } from './types';
 
 // @ts-ignore
 const basePath = import.meta.env.MODE === 'development' ? `/${lokiConfig.appName}/pages/urn/com/${lokiConfig.cloudName}/${lokiConfig.appModelName}/app/pages/${lokiConfig.pageName}/v` : `/${loki.urn.getLastSegment(loki.app.appInstanceUrn)}/pages/urn/com/${lokiConfig.appRoot}/${lokiConfig.appModelName}/app/pages/${lokiConfig.pageName}/v`;

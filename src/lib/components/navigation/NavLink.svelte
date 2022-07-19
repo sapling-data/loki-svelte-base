@@ -1,5 +1,5 @@
 <script lang="ts">
-import type {NavItem} from "../../../types";
+import type {NavItem} from "../../types";
 import { Link } from 'svelte-routing';
 import { Icon } from '@steeze-ui/svelte-icon';
 export let to: string;
