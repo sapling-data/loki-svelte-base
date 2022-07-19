@@ -10,7 +10,7 @@
     () => fetchWorkflows(),
     {
       onError: (error) => {
-        notifications.error(error);
+        notifications.error(error.message, error.error);
       }
     }
   );
@@ -20,7 +20,7 @@
 
 <div class="relative">
   {#if $workflows.isLoading}
-    <div class="absolute top-0 right-0">
+    <div class="top-0 right-0">
       <LoadingIndicator mode="load" itemName="workflows" />
     </div>
   {:else if $workflows.error}
@@ -33,7 +33,7 @@
     <div class="flex w-full relative">
       <h1 class="text-lg font-bold">Workflows</h1>
       {#if $workflows.isFetching}
-        <div class="absolute top-0 right-0">
+        <div class="ml-auto my-auto">
           <LoadingIndicator mode="fetch" itemName="workflows" />
         </div>
       {/if}
