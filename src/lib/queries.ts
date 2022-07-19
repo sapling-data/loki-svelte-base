@@ -1,9 +1,9 @@
-import type {LokiEntity, QueryOptions, Workflow} from "./validators";
-import {workflowValidator} from "./validators";
+import type { LokiEntity, QueryOptions, Workflow } from "./validators";
+import { workflowValidator } from "./validators";
 
 export const queryLoki = async (queryOptions: QueryOptions) => {
   // @ts-ignore
-  const query = await loki.data.query(queryOptions)
+  const query = await loki.data.query(queryOptions);
   return query.results;
 };
 
@@ -15,7 +15,7 @@ export const loadEntity = async (urn: string, view: string) => {
 export const saveEntity = async (entity: LokiEntity, view: string) => {
   // @ts-ignore
   await loki.data.saveEntity(entity.urn, entity, view);
-}
+};
 
 export const fetchWorkflows = async (): Promise<Workflow[]> => {
   const results = await queryLoki({
@@ -31,4 +31,4 @@ export const fetchWorkflow = async (workflowUrnSegment: string): Promise<Workflo
   const workflowUrn = `urn:com:loki:examples-data:data:workflows:${workflowUrnSegment}`;
   const result = await loadEntity(workflowUrn, 'urn:com:loki:examples:model:types:workflow');
   return workflowValidator.parse(result);
-}
+};
