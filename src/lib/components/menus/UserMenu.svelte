@@ -57,9 +57,9 @@
   {#if open}
     <div out:fade="{{ duration: 125 }}">
       <MenuItems
-              class="z-10 p-1.5 transform -translate-y-full absolute bg-white rounded-md
+              class="z-10 p-1.5 transform absolute right-0 left-0 bg-white rounded-md
               shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none
-              {navMode === 'sidebar' ? 'right-0 left-0 origin-top-right -translate-y-full -top-2' : ''}"
+              {navMode === 'sidebar' ? 'origin-top-right -translate-y-full -top-2' : 'mt-[-0.25rem]'}"
       >
         <div>
           <MenuItem class="flex flex-row">
@@ -67,7 +67,11 @@
                     class="text-white flex w-full items-center px-2 py-1.5
                     text-xxs hover:bg-gray-200 rounded-md
                     text-gray-700 whitespace-nowrap">
-              <Icon src={User} theme="outline" class="block h-4 w-4 mr-2" />
+              <Icon
+                      src={User}
+                      theme="outline"
+                      class="block h-4 w-4 mr-2"
+              />
               <span class="my-auto text-xxs">Profile</span>
             </button>
           </MenuItem>
@@ -76,7 +80,11 @@
                     class="text-white flex w-full items-center px-2 py-1.5
                     text-xxs hover:bg-gray-200 rounded-md
                     text-gray-700 whitespace-nowrap">
-              <Icon src={Briefcase} theme="outline" class="block h-4 w-4 mr-2" />
+              <Icon
+                      src={Briefcase}
+                      theme="outline"
+                      class="block h-4 w-4 mr-2"
+              />
               <span class="my-auto text-xxs">Account</span>
             </button>
           </MenuItem>
@@ -85,7 +93,11 @@
                     class="text-white flex w-full items-center px-2 py-1.5
                     text-xxs hover:bg-gray-200 rounded-md
                     text-gray-700 whitespace-nowrap">
-              <Icon src={Logout} theme="outline" class="block h-4 w-4 mr-2" />
+              <Icon
+                      src={Logout}
+                      theme="outline"
+                      class="block h-4 w-4 mr-2"
+              />
               <span class="my-auto text-xxs">Log out</span>
             </button>
           </MenuItem>

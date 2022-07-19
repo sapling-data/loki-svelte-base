@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
   import { fade } from 'svelte/transition';
   import {
       Popover,
@@ -8,16 +7,12 @@
   } from '@rgossiaux/svelte-headlessui';
   import { createPopperActions } from 'svelte-popperjs';
   import { Icon } from '@steeze-ui/svelte-icon';
-  import {ChevronDown, Cube, GlobeAlt} from '@steeze-ui/heroicons';
+  import {ChevronDown, GlobeAlt} from '@steeze-ui/heroicons';
   import { loadMenu } from '../../helpers';
-  const [popperRef, popperContent] = createPopperActions();
-  const popperOptions = {
-      placement: "bottom-end",
-      strategy: "fixed",
-  };
-  export let appTitle: string;
-  let menuItems;
-  onMount(async() => menuItems = loadMenu());
+  import type {CloudMenuItem} from "../../../types";
+  const [popperRef] = createPopperActions();
+  const menuItems: CloudMenuItem[] = loadMenu();
+  export let title: string;
 </script>
 
 <Popover let:open>
@@ -29,9 +24,10 @@
       <span class="flex min-w-0 items-center justify-between space-x-2">
         <span class="flex-1 flex flex-col min-w-0">
           <span
-                  class="text-sm font-medium truncate group-hover:text-blue-300 {open ? 'text-blue-300' : 'text-white'}"
+                  class="text-sm font-medium truncate group-hover:text-blue-300
+                  {open ? 'text-blue-300' : 'text-white'}"
           >
-            {appTitle}
+            {title}
           </span>
         </span>
       </span>
@@ -48,15 +44,26 @@
     </div>
   </PopoverButton>
   {#if open}
-    <div class:z-50={open} out:fade="{{ duration: 125 }}">
-      <PopoverPanel class="ml-2 cloud-menu-container p-1.5 absolute max-h-96 overflow-y-auto origin-top-left bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+    <div
+            class:z-50={open}
+            out:fade="{{ duration: 125 }}"
+    >
+      <PopoverPanel
+              class="cloud-menu-container p-1.5 absolute max-h-96 overflow-y-auto
+              origin-top-left bg-white rounded-md shadow-lg ring-1 ring-black
+              ring-opacity-5 focus:outline-none"
+      >
         {#each menuItems as item }
           <a
                   href={item.link}
                   class="text-white flex flex-row w-full items-center px-2 py-1.5
-                text-xxs hover:bg-gray-200 rounded-md
-                text-gray-700 whitespace-nowrap">
-            <Icon src={GlobeAlt} theme="outline" class="block h-4 w-4 mr-2 text-blue-500" />
+                  text-xxs hover:bg-gray-200 rounded-md
+                  text-gray-700 whitespace-nowrap">
+            <Icon
+                    src={GlobeAlt}
+                    theme="outline"
+                    class="block h-4 w-4 mr-2 text-blue-500"
+            />
             <span class="my-auto text-xxs">{ item.title }</span>
           </a>
         {/each}
