@@ -1,3 +1,7 @@
+<script lang="ts">
+  export let location;
+</script>
+
 <div class="flex flex-col gap-7 items-center py-7">
   <h1 class="text-3xl font-bold">Documentation</h1>
   <span>
