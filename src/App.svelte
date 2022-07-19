@@ -18,6 +18,7 @@
   import { notifications } from './lib/notifications';
   import Notifications from "./lib/components/Notifications.svelte";
 </script>
+
 <QueryClientProvider>
   <Router>
     <div class="min-h-full flex grow relative">
@@ -66,15 +67,6 @@
         {/if}
         <div class="relative flex-grow w-full py-4 sm:px-6 lg:px-8 overflow-y-auto">
           <Notifications />
-          <button on:click={() => notifications.send({
-            type: 'info',
-            title: 'Info',
-            message: 'This is an info message',
-            duration: 5000,
-            dismissable: true,
-          })}>
-            Info!
-          </button>
           {#each navItems as item }
             <Route
                     path={item.to}
