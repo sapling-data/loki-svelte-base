@@ -10,7 +10,6 @@ export const queryOptionsValidator = z.object({
   mapResults: z.boolean(),
   namedParams: z.array(queryParamValidator).optional()
 }).strict();
-// write a javascript regex to validate a standard urn pattern
 
 export const lokiEntityValidator = z.object({
   urn: z.string().regex(new RegExp("urn:com:[A-Za-z0-9][A-Za-z0-9-]{0,31}:([A-Za-z0-9()+,\\-.:=@;$_!*']|%[0-9A-Fa-f]{2})+"), "Valid URN required"),
