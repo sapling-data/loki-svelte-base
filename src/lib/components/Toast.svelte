@@ -1,7 +1,8 @@
 <script lang="ts">
   import { fly } from 'svelte/transition';
   import {CheckCircle, InformationCircle, XCircle, Exclamation, X} from "@steeze-ui/heroicons";
-  import { Icon } from "@steeze-ui/svelte-icon";
+  import {Icon} from "@steeze-ui/svelte-icon";
+  import type {IconSource} from "@steeze-ui/svelte-icon";
   import {notifications} from "../notifications";
 
   export let type: string;
@@ -76,6 +77,7 @@
   };
 
   const iconColor = getIconColor(type);
+  const icon: IconSource = getIcon(type);
 </script>
 
 <div
@@ -87,7 +89,7 @@
       <div class="p-4">
         <div class="flex items-start">
           <div class="flex-shrink-0">
-            <Icon src={getIcon(type)} theme="solid" class="h-6 w-6 {iconColor}" />
+            <Icon src={icon} theme="solid" class="h-6 w-6 {iconColor}" />
           </div>
           <div class="ml-3 w-0 flex-1 pt-0.5">
             <p class="text-sm font-medium text-gray-900">{title}</p>
