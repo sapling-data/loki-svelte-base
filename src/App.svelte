@@ -15,7 +15,6 @@
       navigate(basePath + '/', { replace: true });
     }
   });
-  import { notifications } from './lib/notifications';
   import Notifications from "./lib/components/Notifications.svelte";
 </script>
 
@@ -31,12 +30,12 @@
             <button
                     on:click={() => showSidebar = !showSidebar}
                     type="button"
-                    class="rounded-tr-lg border-r border-t border-gray-300 shadow-sm text-gray-800 flex items-center px-2.5 py-2.5 bg-gray-50
+                    class="rounded-tr-lg border-r border-t border-gray-300 shadow-sm text-gray-800 flex items-center px-2 py-1.5 bg-gray-50
                     text-xxs hover:bg-gray-100 hover:text-gray-900"
             >
               <div class="flex my-auto">
                 <svg
-                        class="h-4 w-4 mr-2"
+                        class="h-5 w-5 mr-2"
                         stroke-width="1"
                         viewBox="0 0 24 24"
                         fill="none"
