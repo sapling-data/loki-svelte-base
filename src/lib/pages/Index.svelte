@@ -5,6 +5,7 @@
   import { Link } from 'svelte-routing';
   import LoadingIndicator from '../components/LoadingIndicator.svelte';
   import { notifications } from '../notifications';
+  import ErrorIndicator from "../components/ErrorIndicator.svelte";
   const workflows = useQuery(
     'workflows',
     () => fetchWorkflows(),
@@ -20,14 +21,12 @@
 
 <div class="relative">
   {#if $workflows.isLoading}
-    <div class="top-0 right-0">
+    <div class="top-0 left-0">
       <LoadingIndicator mode="load" itemName="workflows" />
     </div>
   {:else if $workflows.error}
-    <div class="absolute top-0 right-0">
-      <span class="inline-flex items-center px-3 py-0.5 rounded-md text-sm font-medium bg-red-100 text-red-800">
-        <span>Error: {$workflows.error.message}</span>
-      </span>
+    <div class="top-0 left-0">
+      <ErrorIndicator message={$workflows.error.message} />
     </div>
   {:else}
     <div class="flex w-full relative">
