@@ -48,7 +48,7 @@
                       rounded-md hover:bg-gray-700 hover:text-white"
               >
                 <svg
-                        class="h-4 w-4 mr-2"
+                        class="h-5 w-5 mr-2"
                         stroke-width="1"
                         viewBox="0 0 24 24"
                         fill="none"
