@@ -2,6 +2,8 @@
   import { useQuery } from '@sveltestack/svelte-query';
   import { fetchWorkflow } from '../queries';
   import LoadingIndicator from "../components/LoadingIndicator.svelte";
+  import BackButton from "../components/navigation/BackButton.svelte";
+  import ErrorIndicator from "../components/ErrorIndicator.svelte";
   export let workflowId: string;
   export let location;
   const workflow = useQuery('workflow', () => fetchWorkflow(workflowId));
@@ -9,20 +11,19 @@
 
 <div class="relative">
   {#if $workflow.isLoading}
-    <div class="absolute top-0 right-0">
+    <div class="top-0 left-0">
       <LoadingIndicator mode="load" itemName="workflow" />
     </div>
   {:else if $workflow.error}
-    <div class="absolute top-0 right-0">
-      <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-red-100 text-red-800">
-        <span>Error: {$workflow.error.message}</span>
-      </span>
+    <div class="top-0 left-0">
+      <ErrorIndicator message={$workflow.error.message} />
     </div>
   {:else}
-    <div class="flex w-full relative">
+    <BackButton />
+    <div class="flex w-full mt-3">
       <h1 class="text-lg font-bold">{$workflow.data.name}</h1>
       {#if $workflow.isFetching}
-        <div class="ml-auto my-auto">
+        <div class="ml-3 my-auto">
           <LoadingIndicator mode="fetch" itemName="workflow" />
         </div>
       {/if}
