@@ -46,15 +46,14 @@
 <Popover class="{!minimal && 'px-2'} py-2" let:open>
   <PopoverButton
           use={[popperRef]}
-          class="group w-full bg-gray-800 text-sm text-left font-medium"
+          class="group w-full text-sm text-left font-medium"
   >
     <div class="flex w-full justify-between items-center">
       <div class="flex min-w-0 items-center {!minimal && 'justify-between space-x-2'}">
         <div class="flex-1 flex flex-col min-w-0">
           <div
-                  class="{minimal && 'mx-auto'} w-8 h-8 bg-blue-500 group-hover:bg-blue-600 flex flex-col rounded-full items-center"
-                  class:bg-blue-600={open}
-                  class:bg-blue-500={!open}
+                  class="{minimal && 'mx-auto'} w-8 h-8 bg-blue-500 group-hover:bg-blue-600 flex
+                  flex-col rounded-full items-center {open ? 'dark:text-blue-300 text-blue-600' : 'dark:text-white text-gray-600'}"
           >
               <span class="my-auto text-sm font-semibold text-white">
                 {getInitials(userData.name)}
@@ -63,9 +62,8 @@
         </div>
         {#if !minimal}
             <span
-                    class="text-xxs font-medium truncate group-hover:text-blue-300"
-                    class:text-blue-300={open}
-                    class:text-white={!open}
+                    class="text-xxs font-medium truncate group-hover:text-blue-600 dark:group-hover:text-blue-300
+                    {open ? 'dark:text-blue-300 text-blue-600' : 'dark:text-white text-gray-600'}"
             >
               {userData.name}
             </span>
@@ -73,13 +71,11 @@
       </div>
       {#if !minimal}
         <div
-                class="group-hover:text-blue-300"
-                class:text-blue-300={open}
-                class:text-gray-400={!open}
+                class="dark:group-hover:text-blue-300 group-hover:text-blue-600 {open ? 'dark:text-blue-300 text-blue-600' : 'dark:text-gray-400 text-gray-600'}"
         >
           <Icon
                   src={ChevronDown}
-                  class="flex-shrink-0 h-4 w-4 ml-2"
+                  class="flex-shrink-0 h-4 w-4 ml-2 {navMode === 'sidebar' && 'rotate-180'}"
                   aria-hidden="true" />
         </div>
       {/if}
