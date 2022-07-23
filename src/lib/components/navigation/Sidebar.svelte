@@ -17,7 +17,7 @@
 
 {#if show}
   <div
-          class="bg-gray-100 dark:bg-gray-900 flex flex-col" id="sidebar"
+          class="bg-gray-100 dark:bg-gray-900 dark:border-r dark:border-gray-800 flex flex-col" id="sidebar"
   >
     <div class="flex flex-col h-0 flex-1 {minimal ? 'w-12' : 'w-56 min-w-max pt-2'}">
       {#if displayLogo}
