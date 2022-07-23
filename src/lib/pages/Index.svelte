@@ -19,7 +19,7 @@
   export let location;
 </script>
 
-<div class="relative">
+<div class="relative p-4">
   {#if $workflows.isLoading}
     <div class="top-0 left-0">
       <LoadingIndicator mode="load" itemName="workflows" />
