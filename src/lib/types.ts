@@ -12,6 +12,7 @@ export interface NavItem {
     component: any;
     to: string;
     description?: string;
+    default?: boolean;
 }
 
 export interface AppConfig {
@@ -20,4 +21,8 @@ export interface AppConfig {
     navMode: string;
     navItems: NavItem[];
     allowNavToggle: boolean;
+    displayLogo: boolean;
+    displayCloudMenu: boolean;
+    displayUserMenu: boolean;
+    minimalSidebar: boolean;
 }
