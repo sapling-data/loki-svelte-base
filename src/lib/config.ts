@@ -17,7 +17,7 @@ export const appConfig: AppConfig = {
   displayLogo: true,
   displayCloudMenu: true,
   displayUserMenu: true,
-  minimalSidebar: true,
+  thinNavbar: false,
   darkByDefault: true,
   navItems: [
     {
