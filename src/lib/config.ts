@@ -18,6 +18,7 @@ export const appConfig: AppConfig = {
   displayCloudMenu: true,
   displayUserMenu: true,
   minimalSidebar: true,
+  darkByDefault: true,
   navItems: [
     {
       name: 'Welcome',
