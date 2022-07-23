@@ -23,7 +23,7 @@
 
 <QueryClientProvider>
   <Router>
-    <div class="{ darkByDefault ? 'dark bg-black' : 'bg-gray-50' } min-h-full flex grow relative">
+    <div class="{ darkByDefault ? 'dark bg-gray-900' : 'bg-gray-50' } min-h-full flex grow relative">
       {#if navMode === 'sidebar'}
         {#if allowNavToggle && !showSidebar}
           <div
