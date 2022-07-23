@@ -25,4 +25,5 @@ export interface AppConfig {
     displayCloudMenu: boolean;
     displayUserMenu: boolean;
     minimalSidebar: boolean;
+    darkByDefault: boolean;
 }

@@ -7,7 +7,7 @@
   import Navbar from './lib/components/navigation/Navbar.svelte';
   import Workflow from './lib/pages/Workflow.svelte';
   import { appConfig } from './lib/config';
-  const { allowNavToggle, displayCloudMenu, displayLogo, displayUserMenu, basePath, navItems, navMode, title } = appConfig;
+  const { allowNavToggle, displayCloudMenu, displayLogo, displayUserMenu, darkByDefault, basePath, navItems, navMode, title } = appConfig;
   const queryClient = new QueryClient();
   $: showSidebar = true;
   $: minimal = false;
@@ -23,7 +23,7 @@
 
 <QueryClientProvider>
   <Router>
-    <div class="min-h-full flex grow relative">
+    <div class="{ darkByDefault ? 'dark bg-black' : 'bg-gray-50' } min-h-full flex grow relative">
       {#if navMode === 'sidebar'}
         {#if allowNavToggle && !showSidebar}
           <div
