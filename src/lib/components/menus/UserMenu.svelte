@@ -10,6 +10,7 @@
   const [popperRef] = createPopperActions();
   export let navMode: string;
   export let minimal: boolean;
+  export let thinNavbar: boolean;
   let userData = loki.user?.getUserData() || {
     urn: 'urn:com:saplingdata:domain:security:users:testUser',
     name: 'Test User'
@@ -50,6 +51,7 @@
   >
     <div class="flex w-full justify-between items-center">
       <div class="flex min-w-0 items-center {!minimal && 'justify-between space-x-2'}">
+        {#if !thinNavbar}
         <div class="flex-1 flex flex-col min-w-0">
           <div
                   class="{minimal && 'mx-auto'} w-8 h-8 bg-blue-500 group-hover:bg-blue-600 flex
@@ -60,6 +62,7 @@
               </span>
           </div>
         </div>
+        {/if}
         {#if !minimal}
             <span
                     class="text-xxs font-medium truncate group-hover:text-blue-600 dark:group-hover:text-blue-300
@@ -87,14 +90,15 @@
     >
       <PopoverPanel
               class="menu-container p-1.5 absolute max-h-96 w-48 overflow-y-auto
-                origin-bottom-left bg-white rounded-md shadow-lg ring-1 ring-black
-                ring-opacity-5 focus:outline-none {navMode === 'sidebar' ? '-translate-y-full -bottom-12' : 'top-11 right-1'}"
+                origin-bottom-left bg-white dark:bg-gray-900 rounded-md shadow-lg ring-1 ring-black
+                ring-opacity-5 focus:outline-none dark:border dark:border-gray-700
+                {navMode === 'sidebar' ? '-translate-y-full -bottom-12' : thinNavbar ? 'top-9 right-1' : 'top-11 right-1'}"
       >
         {#each menuItems as item }
           <button
                   href={item.link}
                   class="flex flex-row w-full items-center px-2 py-1.5
-                    text-xxs hover:bg-gray-200 rounded-md
+                    text-xxs hover:bg-gray-200 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white rounded-md
                     text-gray-700 whitespace-nowrap">
             <Icon
                     src={item.icon}

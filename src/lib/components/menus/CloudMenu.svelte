@@ -63,14 +63,14 @@
       >
         <PopoverPanel
                 class="cloud-menu-container p-1.5 absolute max-h-96 overflow-y-auto
-                origin-top-left bg-white rounded-md shadow-lg ring-1 ring-black
-                ring-opacity-5 focus:outline-none"
+                origin-top-left bg-white dark:bg-gray-900 rounded-md shadow-lg ring-1 ring-black
+                ring-opacity-5 focus:outline-none dark:border dark:border-gray-700"
         >
           {#each menuItems as item }
             <a
                     href={item.link}
                     class="flex flex-row w-full items-center px-2 py-1.5
-                    text-xxs hover:bg-gray-200 rounded-md
+                    text-xxs hover:bg-gray-200 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white rounded-md
                     text-gray-700 whitespace-nowrap">
               <Icon
                       src={GlobeAlt}
