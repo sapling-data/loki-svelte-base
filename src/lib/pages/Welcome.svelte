@@ -2,7 +2,7 @@
   export let location;
 </script>
 
-<div class="flex flex-col gap-7 items-center py-7">
+<div class="flex flex-col gap-7 items-center py-7 dark:text-white">
   <h1 class="text-3xl font-bold" id="message">Svelte Base</h1>
   <svg class="w-32 h-32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 98.1 118" style="enable-background:new 0 0 98.1 118;" xml:space="preserve">
     <style type="text/css">
