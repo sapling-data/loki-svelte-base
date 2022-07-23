@@ -53,7 +53,7 @@
         <div class="flex-1 flex flex-col min-w-0">
           <div
                   class="{minimal && 'mx-auto'} w-8 h-8 bg-blue-500 group-hover:bg-blue-600 flex
-                  flex-col rounded-full items-center {open ? 'dark:text-blue-300 text-blue-600' : 'dark:text-white text-gray-600'}"
+                  flex-col rounded-full items-center {open ? 'dark:text-blue-300 bg-blue-600 text-blue-600' : 'dark:text-white text-gray-600'}"
           >
               <span class="my-auto text-sm font-semibold text-white">
                 {getInitials(userData.name)}
