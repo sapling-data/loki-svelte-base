@@ -12,11 +12,11 @@ export default {
       current: 'currentColor',
       black: colors.black,
       white: colors.white,
-      gray: colors.stone,
+      gray: colors.neutral,
       emerald: colors.emerald,
       indigo: colors.indigo,
       yellow: colors.yellow,
-      blue: colors.blue,
+      blue: colors.blue
     },
     extend: {
       fontSize: {
