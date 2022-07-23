@@ -34,7 +34,7 @@
                     on:click={() => showSidebar = !showSidebar}
                     type="button"
                     class="rounded-tr-lg border-r border-t border-gray-300 dark:border-gray-700 shadow-sm
-                    text-gray-600 hover:text-gray-600 hover:bg-gray-200 dark:text-gray-400 dark:bg-gray-800
+                    text-gray-600 hover:text-gray-600 hover:bg-gray-200 dark:text-gray-400 dark:bg-gray-900
                     dark:hover:bg-gray-800 dark:hover:text-white
                     flex gap-2 items-center px-4 pb-2 pt-2 text-xxs"
             >
