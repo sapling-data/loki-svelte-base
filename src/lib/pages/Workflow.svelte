@@ -9,7 +9,7 @@
   const workflow = useQuery('workflow', () => fetchWorkflow(workflowId));
 </script>
 
-<div class="relative p-4">
+<div class="relative p-4 dark:text-white">
   {#if $workflow.isLoading}
     <div class="top-0 left-0">
       <LoadingIndicator mode="load" itemName="workflow" />
