@@ -1,76 +1,105 @@
 <script lang="ts">
-  import { fade } from 'svelte/transition';
   import {
-      Popover,
-      PopoverButton,
-      PopoverPanel,
+    Popover,
+    PopoverButton,
+    PopoverPanel,
   } from '@rgossiaux/svelte-headlessui';
   import { createPopperActions } from 'svelte-popperjs';
   import { Icon } from '@steeze-ui/svelte-icon';
-  import {ChevronDown, GlobeAlt} from '@steeze-ui/heroicons';
+  import {ChevronDown, GlobeAlt, Cloud} from '@steeze-ui/heroicons';
   import { loadMenu } from '../../helpers';
   import type {CloudMenuItem} from "../../types";
   const [popperRef] = createPopperActions();
   const menuItems: CloudMenuItem[] = loadMenu();
   export let title: string;
+  export let displayCloudMenu: boolean;
+  export let navMode: string;
+  export let minimal: boolean;
 </script>
 
-<Popover let:open>
-  <PopoverButton
-          use={[popperRef]}
-          class="group w-full bg-gray-800 px-2 py-2 text-sm text-left font-medium"
-  >
+{#if displayCloudMenu}
+  <Popover let:open>
+    <PopoverButton
+            use={[popperRef]}
+            class="group w-full bg-gray-800 px-2 py-2 text-sm text-left font-medium"
+    >
+      <div class="flex w-full justify-between items-center">
+        <span class="flex min-w-0 items-center justify-between space-x-2">
+          <span class="flex-1 flex flex-col min-w-0">
+            {#if !minimal}
+              <span
+                      class="text-sm font-medium truncate group-hover:text-blue-300
+                      {open ? 'text-blue-300' : 'text-white'}"
+              >
+                {title}
+              </span>
+            {/if}
+          </span>
+        </span>
+        {#if !minimal}
+          <div
+                  class="group-hover:text-blue-300"
+                  class:text-blue-300={open}
+                  class:text-gray-400={!open}
+          >
+            <Icon
+                    src={ChevronDown}
+                    class="flex-shrink-0 h-4 w-4 ml-2"
+                    aria-hidden="true" />
+          </div>
+        {:else}
+          <div>
+            <Icon
+                    src={Cloud}
+                    theme="solid"
+                    class="-ml-0.5 h-5 w-5 hover:text-blue-300 {open ? 'text-blue-300' : 'text-white'}"
+                    aria-hidden="true" />
+          </div>
+        {/if}
+      </div>
+    </PopoverButton>
+    {#if open}
+      <div
+              class:z-50={open}
+      >
+        <PopoverPanel
+                class="cloud-menu-container p-1.5 absolute max-h-96 overflow-y-auto
+                origin-top-left bg-white rounded-md shadow-lg ring-1 ring-black
+                ring-opacity-5 focus:outline-none"
+        >
+          {#each menuItems as item }
+            <a
+                    href={item.link}
+                    class="flex flex-row w-full items-center px-2 py-1.5
+                    text-xxs hover:bg-gray-200 rounded-md
+                    text-gray-700 whitespace-nowrap">
+              <Icon
+                      src={GlobeAlt}
+                      theme="outline"
+                      class="block h-4 w-4 mr-2 text-blue-500"
+              />
+              <span class="my-auto text-xxs">{ item.title }</span>
+            </a>
+          {/each}
+        </PopoverPanel>
+      </div>
+    {/if}
+  </Popover>
+{:else if !minimal}
+  <div class="hidden sm:block group px-2 py-2 text-sm text-left font-medium">
     <div class="flex w-full justify-between items-center">
       <span class="flex min-w-0 items-center justify-between space-x-2">
         <span class="flex-1 flex flex-col min-w-0">
           <span
-                  class="text-sm font-medium truncate group-hover:text-blue-300
-                  {open ? 'text-blue-300' : 'text-white'}"
+                  class="text-sm font-medium truncate text-white"
           >
             {title}
           </span>
         </span>
       </span>
-      <div
-              class="group-hover:text-blue-300"
-              class:text-blue-300={open}
-              class:text-gray-400={!open}
-      >
-        <Icon
-                src={ChevronDown}
-                class="flex-shrink-0 h-4 w-4 ml-2"
-                aria-hidden="true" />
-      </div>
     </div>
-  </PopoverButton>
-  {#if open}
-    <div
-            class:z-50={open}
-            out:fade="{{ duration: 125 }}"
-    >
-      <PopoverPanel
-              class="cloud-menu-container p-1.5 absolute max-h-96 overflow-y-auto
-              origin-top-left bg-white rounded-md shadow-lg ring-1 ring-black
-              ring-opacity-5 focus:outline-none"
-      >
-        {#each menuItems as item }
-          <a
-                  href={item.link}
-                  class="text-white flex flex-row w-full items-center px-2 py-1.5
-                  text-xxs hover:bg-gray-200 rounded-md
-                  text-gray-700 whitespace-nowrap">
-            <Icon
-                    src={GlobeAlt}
-                    theme="outline"
-                    class="block h-4 w-4 mr-2 text-blue-500"
-            />
-            <span class="my-auto text-xxs">{ item.title }</span>
-          </a>
-        {/each}
-      </PopoverPanel>
-    </div>
-  {/if}
-</Popover>
+  </div>
+{/if}
 
 <style>
     div :global(.cloud-menu-container) {
