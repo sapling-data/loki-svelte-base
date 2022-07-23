@@ -14,12 +14,17 @@ export const appConfig: AppConfig = {
   title: lokiConfig.pageTitle,
   navMode: 'sidebar',
   allowNavToggle: true,
+  displayLogo: true,
+  displayCloudMenu: true,
+  displayUserMenu: true,
+  minimalSidebar: true,
   navItems: [
     {
       name: 'Welcome',
       to: `${basePath}/`,
       component: Welcome,
-      icon: Home
+      icon: Home,
+      default: true,
     },
     {
       name: 'Index',
