@@ -13,10 +13,12 @@ export default {
       black: colors.black,
       white: colors.white,
       gray: colors.neutral,
-      emerald: colors.emerald,
-      indigo: colors.indigo,
+      green: colors.emerald,
+      purple: colors.indigo,
       yellow: colors.yellow,
-      blue: colors.blue
+      red: colors.rose,
+      blue: colors.blue,
+      'off-black': '#030303'
     },
     extend: {
       fontSize: {
