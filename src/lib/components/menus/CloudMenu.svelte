@@ -21,15 +21,15 @@
   <Popover let:open>
     <PopoverButton
             use={[popperRef]}
-            class="group w-full bg-gray-800 px-2 py-2 text-sm text-left font-medium"
+            class="group w-full px-2 py-2 text-sm text-left font-medium"
     >
       <div class="flex w-full justify-between items-center">
         <span class="flex min-w-0 items-center justify-between space-x-2">
           <span class="flex-1 flex flex-col min-w-0">
             {#if !minimal}
               <span
-                      class="text-sm font-medium truncate group-hover:text-blue-300
-                      {open ? 'text-blue-300' : 'text-white'}"
+                      class="text-sm font-medium truncate dark:group-hover:text-blue-300 group-hover:text-blue-600
+                      {open ? 'dark:text-blue-300 text-blue-600' : 'dark:text-white text-gray-600'}"
               >
                 {title}
               </span>
@@ -38,9 +38,8 @@
         </span>
         {#if !minimal}
           <div
-                  class="group-hover:text-blue-300"
-                  class:text-blue-300={open}
-                  class:text-gray-400={!open}
+                  class="dark:group-hover:text-blue-300 group-hover:text-blue-600
+                  {open ? 'dark:text-blue-300 text-blue-600' : 'dark:text-gray-400 text-gray-600'}"
           >
             <Icon
                     src={ChevronDown}
@@ -51,8 +50,8 @@
           <div>
             <Icon
                     src={Cloud}
-                    theme="solid"
-                    class="-ml-0.5 h-5 w-5 hover:text-blue-300 {open ? 'text-blue-300' : 'text-white'}"
+                    theme="outline"
+                    class="-ml-0.5 h-5 w-5 hover:text-blue-600 dark:hover:text-blue-300 {open ? 'dark:text-blue-300 text-blue-600' : 'dark:text-white text-gray-600'}"
                     aria-hidden="true" />
           </div>
         {/if}
