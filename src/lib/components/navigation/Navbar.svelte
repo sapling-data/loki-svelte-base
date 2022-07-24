@@ -25,7 +25,6 @@
         <CloudMenu
                 {displayCloudMenu}
                 minimal={false}
-                navMode="navbar"
                 {title}
         />
         <div class="hidden sm:flex sm:ml-6">
