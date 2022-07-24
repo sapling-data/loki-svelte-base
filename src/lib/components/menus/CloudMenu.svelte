@@ -6,7 +6,7 @@
   } from '@rgossiaux/svelte-headlessui';
   import { createPopperActions } from 'svelte-popperjs';
   import { Icon } from '@steeze-ui/svelte-icon';
-  import {ChevronDown, GlobeAlt, Cloud} from '@steeze-ui/heroicons';
+  import {ChevronDown, GlobeAlt, MenuAlt2} from '@steeze-ui/heroicons';
   import { loadMenu } from '../../helpers';
   import type {CloudMenuItem} from "../../types";
   const [popperRef] = createPopperActions();
@@ -49,7 +49,7 @@
         {:else}
           <div>
             <Icon
-                    src={Cloud}
+                    src={MenuAlt2}
                     theme="outline"
                     class="-ml-0.5 h-5 w-5 hover:text-blue-600 dark:hover:text-blue-300 {open ? 'dark:text-blue-300 text-blue-600' : 'dark:text-white text-gray-600'}"
                     aria-hidden="true" />
