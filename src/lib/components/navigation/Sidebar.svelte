@@ -19,9 +19,9 @@
   <div
           class="bg-gray-100 dark:bg-gray-900 border-r-[1px] border-gray-300 dark:border-gray-800 flex flex-col" id="sidebar"
   >
-    <div class="flex flex-col h-0 flex-1 {minimal ? 'w-12' : 'w-56 min-w-max pt-2'}">
-      {#if displayLogo || !minimal}
-        <div class="flex items-center flex-shrink-0 px-2 py-2 mx-auto">
+    <div class="flex flex-col h-0 flex-1 pt-2 {minimal ? 'w-12' : 'w-56 min-w-max'}">
+      {#if displayLogo}
+        <div class="{minimal && 'hidden'} flex items-center flex-shrink-0 px-2 py-2 mx-auto">
           <svg
                   height="50px"
                   width="200px"
