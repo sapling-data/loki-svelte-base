@@ -10,7 +10,6 @@ const injectLokiFreemarkerPlugin = () => ({
     const lokiFreemarkerExpressions = [
       'urn:com:loki:js:app:pages:lokiJs',
       'urn:com:loki:jquery:app:pages:lokiJQuery',
-      'urn:com:loki:js:app:pages:lokiSession',
     ];
     const scriptTag = {
       tag: 'script',
@@ -28,6 +27,16 @@ const injectLokiFreemarkerPlugin = () => ({
         },
       },
     };
+    const lokiSessionTag = {
+      tag: 'script',
+      injectTo: 'body',
+      attrs: {
+        type: 'text/javascript',
+        src: `\${loki.web.pageUrlWithCacheCheck('urn:com:loki:js:app:pages:lokiSession')}`,
+        defer: true,
+        async: true,
+      },
+    };
     const lokiTags = lokiFreemarkerExpressions.map((expression) => ({
       ...scriptTag,
       ...{
@@ -39,15 +48,19 @@ const injectLokiFreemarkerPlugin = () => ({
     let bundleTags = Object.values(ctx.bundle).map((item) => ({
       empty: (item.code === '\n'),
       tag: item.type === 'asset' ? 'link' : 'script',
-      injectTo: 'head',
+      injectTo: 'body',
       attrs: {
         ...(item.type === 'asset' && {
           rel: 'stylesheet',
           href: `\${loki.web.resourceUrl('${pageUrn}!${item.fileName}')}`,
+          defer: true,
+          async: true,
         }),
         ...(item.type === 'chunk' && {
           type: 'module',
           src: `\${loki.web.resourceUrl('${pageUrn}!${item.fileName}')}`,
+          defer: true,
+          async: true,
         }),
       },
     }));
@@ -67,7 +80,7 @@ const injectLokiFreemarkerPlugin = () => ({
     // prevent extraneous tag in production html
     bundleTags = bundleTags.filter((tag) => !tag.empty);
     return {
-      tags: [...bundleTags, ...lokiTags, jQueryTag, ...headTags],
+      tags: [...bundleTags, ...lokiTags, lokiSessionTag, jQueryTag, ...headTags],
     };
   },
 });
