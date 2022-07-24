@@ -156,6 +156,7 @@
               <UserMenu
                       bind:minimal={minimal}
                       navMode={"sidebar"}
+                      thinNavbar={false}
               />
             {/if}
           </div>
