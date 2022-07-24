@@ -23,3 +23,15 @@ a[aria-current="page"] {
   flex: 0 0 auto;
   margin-bottom: 10px;
 }
+
+.dark path.st0 {
+  fill: #FFFFFF;
+}
+
+path.st0 {
+  fill: #171717;
+}
+
+path.st1, rect.st1 {
+  fill: #27DBF2;
+}
