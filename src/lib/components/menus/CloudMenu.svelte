@@ -17,7 +17,7 @@
 </script>
 
 {#if displayCloudMenu}
-  <Popover let:open>
+  <Popover class="py-2" let:open>
     <PopoverButton
             use={[popperRef]}
             class="group w-full px-2 py-2 text-sm text-left font-medium"
