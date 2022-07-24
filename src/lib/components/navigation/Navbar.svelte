@@ -4,6 +4,7 @@
   import CloudMenu from '../menus/CloudMenu.svelte';
   import UserMenu from '../menus/UserMenu.svelte';
   import NavLink from './NavLink.svelte';
+  import Logo from "./Logo.svelte";
   export let navItems: NavItem[];
   export let title: string;
   export let displayUserMenu: boolean;
@@ -18,8 +19,7 @@
       <div class="flex items-center justify-center flex-1 sm:items-stretch sm:justify-start">
         {#if displayLogo && !thinNavbar}
           <div class="flex-shrink-0 flex items-center mr-4">
-            <img class="block lg:hidden h-8 w-auto" src="https://saplingdata.com/wp-content/themes/sapling/img/sapling-data-logo.svg" alt="Sapling Data" />
-            <img class="hidden lg:block h-8 w-auto" src="https://saplingdata.com/wp-content/themes/sapling/img/sapling-data-logo.svg" alt="Sapling Data" />
+            <Logo height="50px" width="150px" />
           </div>
         {/if}
         <CloudMenu
