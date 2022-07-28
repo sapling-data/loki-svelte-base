@@ -23,6 +23,8 @@
           </div>
         {/if}
         <CloudMenu
+                navMode={"navbar"}
+                {thinNavbar}
                 {displayCloudMenu}
                 minimal={false}
                 {title}
@@ -35,6 +37,8 @@
                         to={item.to}
                         icon={item.icon}
                         name={item.name}
+                        {thinNavbar}
+                        navMode="navbar"
                 />
               {/each}
             </Router>
