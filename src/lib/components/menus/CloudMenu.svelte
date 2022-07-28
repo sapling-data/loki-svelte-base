@@ -19,10 +19,10 @@
 </script>
 
 {#if displayCloudMenu}
-  <Popover class="py-2" let:open>
+  <Popover class="{navMode === 'navbar' && !thinNavbar ? 'py-2' : ''} flex flex-col" let:open>
     <PopoverButton
             use={[popperRef]}
-            class="group w-full px-2 py-2 text-sm text-left font-medium"
+            class="group w-full px-2 {navMode === 'navbar' && !thinNavbar && 'py-2'} my-auto text-sm text-left font-medium"
     >
       <div class="flex w-full justify-between items-center">
         <span class="flex min-w-0 items-center justify-between space-x-2">
@@ -65,7 +65,7 @@
         <PopoverPanel
                 class="cloud-menu-container p-1.5 absolute max-h-96 overflow-y-auto
                 origin-top-left bg-white dark:bg-gray-900 rounded-md shadow-lg ring-1 ring-black
-                ring-opacity-5 focus:outline-none dark:border dark:border-gray-700"
+                ring-opacity-5 focus:outline-none dark:border dark:border-gray-700 {thinNavbar && '-mt-0.5'}"
         >
           {#each menuItems as item }
             <a
@@ -86,17 +86,19 @@
     {/if}
   </Popover>
 {:else if !minimal}
-  <div class="hidden sm:block group px-2 py-2 text-sm text-left font-medium">
-    <div class="flex w-full justify-between items-center">
+  <div class="{navMode === 'navbar' && !thinNavbar ? 'py-2' : ''} flex flex-col">
+    <div class="w-full px-2 {navMode === 'navbar' && !thinNavbar && 'py-2'} my-auto text-sm text-left font-medium">
+      <div class="flex w-full justify-between items-center">
       <span class="flex min-w-0 items-center justify-between space-x-2">
         <span class="flex-1 flex flex-col min-w-0">
           <span
-                  class="text-sm font-medium truncate text-white"
+                  class="text-sm font-medium truncate dark:text-white text-gray-600"
           >
             {title}
           </span>
         </span>
       </span>
+      </div>
     </div>
   </div>
 {/if}
