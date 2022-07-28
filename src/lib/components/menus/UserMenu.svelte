@@ -44,37 +44,39 @@
   ]
 </script>
 
-<Popover class="{!minimal && 'px-2'} py-2" let:open>
+<Popover class="{!minimal && 'px-2'} {navMode === 'navbar' && !thinNavbar ? 'py-2' : ''} flex flex-col w-full" let:open>
   <PopoverButton
           use={[popperRef]}
           class="group w-full text-sm text-left font-medium"
   >
-    <div class="flex w-full justify-between items-center">
+    <div class="flex w-full justify-between items-center my-auto">
       <div class="flex min-w-0 items-center {!minimal && 'justify-between space-x-2'}">
         {#if !thinNavbar}
-        <div class="flex-1 flex flex-col min-w-0">
-          <div
-                  class="{minimal && 'mx-auto'} w-8 h-8 bg-blue-600 group-hover:bg-blue-700 flex
-                  flex-col rounded-full items-center {open ? 'dark:text-blue-300 bg-blue-700 text-blue-600' : 'dark:text-white text-gray-600'}"
-          >
-              <span class="my-auto text-sm font-semibold text-white">
-                {getInitials(userData.name)}
-              </span>
+          <div class="flex-1 flex flex-col min-w-0">
+            <div
+                    class="{minimal && 'mx-auto'} w-8 h-8 bg-blue-600 group-hover:bg-blue-700 flex
+                    flex-col rounded-full items-center {open ? 'dark:text-blue-300 bg-blue-700 text-blue-600' : 'dark:text-white text-gray-600'}"
+            >
+                <span class="my-auto text-sm font-semibold text-white">
+                  {getInitials(userData.name)}
+                </span>
+            </div>
           </div>
-        </div>
         {/if}
         {#if !minimal}
-            <span
-                    class="text-xxs font-medium truncate group-hover:text-blue-600 dark:group-hover:text-blue-300
-                    {open ? 'dark:text-blue-300 text-blue-600' : 'dark:text-white text-gray-600'}"
-            >
-              {userData.name}
-            </span>
+          <div class="flex-shrink-0 flex flex-col min-w-0">
+              <span
+                      class="text-xxs font-medium truncate group-hover:text-blue-600 dark:group-hover:text-blue-300
+                      {open ? 'dark:text-blue-300 text-blue-600' : 'dark:text-white text-gray-600'}"
+              >
+                {userData.name}
+              </span>
+          </div>
         {/if}
       </div>
       {#if !minimal}
         <div
-                class="dark:group-hover:text-blue-300 group-hover:text-blue-600 {open ? 'dark:text-blue-300 text-blue-600' : 'dark:text-gray-400 text-gray-600'}"
+                class="ml-auto dark:group-hover:text-blue-300 group-hover:text-blue-600 {open ? 'dark:text-blue-300 text-blue-600' : 'dark:text-gray-400 text-gray-600'}"
         >
           <Icon
                   src={ChevronDown}
@@ -92,7 +94,7 @@
               class="menu-container p-1.5 absolute max-h-96 w-48 overflow-y-auto
                 origin-bottom-left bg-white dark:bg-gray-900 rounded-md shadow-lg ring-1 ring-black
                 ring-opacity-5 focus:outline-none dark:border dark:border-gray-700
-                {navMode === 'sidebar' ? '-translate-y-full -bottom-12' : thinNavbar ? 'top-9 right-1' : 'top-11 right-1'}"
+                {navMode === 'sidebar' ? '-translate-y-full -bottom-12' : thinNavbar ? 'top-7 right-1' : 'top-11 right-1'}"
       >
         {#each menuItems as item }
           <button
