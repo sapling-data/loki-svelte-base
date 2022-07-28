@@ -6,6 +6,8 @@
   export let icon: NavItem;
   export let name: string;
   export let minimal: boolean;
+  export let navMode: string;
+  export let thinNavbar: boolean;
 </script>
 
 <Link
