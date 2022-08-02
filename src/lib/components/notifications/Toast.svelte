@@ -3,7 +3,7 @@
   import {CheckCircle, InformationCircle, XCircle, Exclamation, X} from "@steeze-ui/heroicons";
   import {Icon} from "@steeze-ui/svelte-icon";
   import type {IconSource} from "@steeze-ui/svelte-icon";
-  import {notifications} from "../notifications";
+  import {notifications} from "../../notifications";
 
   export let type: string;
   export let message: string;
@@ -11,73 +11,32 @@
   export let id: string;
   export let dismissable: boolean;
 
-  const getIcon = (type) => {
+  const getIcon = (type: string): {source: IconSource, color: string} => {
     switch (type) {
       case 'success':
-        return CheckCircle;
+        return {
+          source: CheckCircle,
+          color: 'text-green-500'
+        }
       case 'error':
-        return XCircle;
+        return {
+          source: XCircle,
+          color: 'text-red-500'
+        }
       case 'warning':
-        return Exclamation;
+        return {
+          source: Exclamation,
+          color: 'text-yellow-500'
+        }
       case 'info':
-        return InformationCircle;
+        return {
+          source: InformationCircle,
+          color: 'text-blue-500'
+        }
     }
   };
 
-  const getBackgroundColor = (type) => {
-    switch (type) {
-      case 'success':
-        return 'bg-green-100';
-      case 'error':
-        return 'bg-red-100';
-      case 'warning':
-        return 'bg-yellow-100';
-      case 'info':
-        return 'bg-blue-100';
-    }
-  };
-
-  const getTextColor = (type) => {
-    switch (type) {
-      case 'success':
-        return 'text-green-800';
-      case 'error':
-        return 'text-red-800';
-      case 'warning':
-        return 'text-yellow-800';
-      case 'info':
-        return 'text-blue-800';
-    }
-  };
-
-  const getIconColor = (type) => {
-    switch (type) {
-      case 'success':
-        return 'text-green-500';
-      case 'error':
-        return 'text-red-500';
-      case 'warning':
-        return 'text-yellow-500';
-      case 'info':
-        return 'text-blue-500';
-    }
-  };
-
-  const getButtonHoverColor = (type) => {
-    switch (type) {
-      case 'success':
-        return 'hover:bg-green-200';
-      case 'error':
-        return 'hover:bg-red-200';
-      case 'warning':
-        return 'hover:bg-yellow-200';
-      case 'info':
-        return 'hover:bg-blue-200';
-    }
-  };
-
-  const iconColor = getIconColor(type);
-  const icon: IconSource = getIcon(type);
+  const { source, color } = getIcon(type);
 </script>
 
 <div
@@ -89,7 +48,7 @@
       <div class="p-4">
         <div class="flex items-start">
           <div class="flex-shrink-0">
-            <Icon src={icon} theme="solid" class="h-6 w-6 {iconColor}" />
+            <Icon src={source} theme="solid" class="h-6 w-6 {color}" />
           </div>
           <div class="ml-3 w-0 flex-1 pt-0.5">
             <p class="text-sm font-medium text-gray-900">{title}</p>
