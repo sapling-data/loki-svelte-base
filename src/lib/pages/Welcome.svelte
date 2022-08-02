@@ -1,5 +1,4 @@
 <script lang="ts">
-  export let location;
 </script>
 
 <div class="flex flex-col gap-7 items-center py-7 dark:text-white">

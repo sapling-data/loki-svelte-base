@@ -16,7 +16,6 @@
     }
   );
   const { basePath } = appConfig;
-  export let location;
 </script>
 
 <div class="relative p-4 dark:text-white">
@@ -29,10 +28,10 @@
       <ErrorIndicator message={$workflows.error.message} />
     </div>
   {:else}
-    <div class="flex w-full relative">
+    <div class="flex w-full">
       <h1 class="text-lg font-bold">Workflows</h1>
       {#if $workflows.isFetching}
-        <div class="ml-auto my-auto">
+        <div class="ml-3 my-auto">
           <LoadingIndicator mode="fetch" itemName="workflows" />
         </div>
       {/if}
