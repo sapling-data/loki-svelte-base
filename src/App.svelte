@@ -18,6 +18,10 @@
     if (import.meta.env.MODE === 'development' && !window.location.href.includes(basePath)) {
       navigate(basePath + '/', { replace: true });
     }
+    const defaultNavItem = navItems.find(item => item.default);
+    if (defaultNavItem && window.location.pathname === basePath + '/') {
+      await navigate(defaultNavItem.to);
+    }
   });
 </script>
 
