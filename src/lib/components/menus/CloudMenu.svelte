@@ -6,9 +6,9 @@
   } from '@rgossiaux/svelte-headlessui';
   import { createPopperActions } from 'svelte-popperjs';
   import { Icon } from '@steeze-ui/svelte-icon';
-  import {ChevronDown, GlobeAlt, MenuAlt2} from '@steeze-ui/heroicons';
+  import { ChevronDown, GlobeAlt, MenuAlt2 } from '@steeze-ui/heroicons';
   import { loadMenu } from '../../helpers';
-  import type {CloudMenuItem} from "../../types";
+  import type { CloudMenuItem } from '../../types';
   const [popperRef] = createPopperActions();
   const menuItems: CloudMenuItem[] = loadMenu();
   export let title: string;
