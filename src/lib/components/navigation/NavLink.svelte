@@ -1,9 +1,10 @@
 <script lang="ts">
-  import type {NavItem} from "../../types";
   import { Link } from 'svelte-routing';
+  import type { IconSource } from '@steeze-ui/svelte-icon/types';
   import { Icon } from '@steeze-ui/svelte-icon';
+
   export let to: string;
-  export let icon: NavItem;
+  export let icon: IconSource;
   export let name: string;
   export let minimal: boolean;
   export let navMode: string;
