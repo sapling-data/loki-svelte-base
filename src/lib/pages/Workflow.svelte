@@ -4,9 +4,17 @@
   import LoadingIndicator from "../components/LoadingIndicator.svelte";
   import BackButton from "../components/navigation/BackButton.svelte";
   import ErrorIndicator from "../components/ErrorIndicator.svelte";
+  import { notifications } from "../notifications";
   export let workflowId: string;
-  export let location;
-  const workflow = useQuery('workflow', () => fetchWorkflow(workflowId));
+  const workflow = useQuery(
+    'workflow',
+    () => fetchWorkflow(workflowId),
+    {
+      onError: (error) => {
+        notifications.error(error.message, error.error);
+      }
+    }
+  );
 </script>
 
 <div class="relative p-4 dark:text-white">
