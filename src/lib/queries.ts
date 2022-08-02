@@ -14,7 +14,7 @@ export const loadEntity = async (urn: string, view: string) => {
 
 export const saveEntity = async (entity: LokiEntity, view: string) => {
   // @ts-ignore
-  await loki.data.saveEntity(entity.urn, entity, view);
+  return await loki.data.saveEntity(entity.urn, entity, view);
 };
 
 export const fetchWorkflows = async (): Promise<Workflow[]> => {
