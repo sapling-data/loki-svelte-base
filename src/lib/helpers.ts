@@ -1,6 +1,6 @@
-import type {CloudMenuItem} from "./types";
+import type { CloudMenuItem } from './types';
 
-export const loadMenu = () => {
+export const loadMenu = (): CloudMenuItem[] => {
   const items: CloudMenuItem[] = [];
   // @ts-ignore
   const cloudControlApiConn = loki.model.getConnectionByServiceGroup('urn:com:saplingdata:cloudControl:model:serviceGroups:cloudServices');
