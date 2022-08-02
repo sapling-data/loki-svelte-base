@@ -1,3 +1,5 @@
+import type { IconSource } from '@steeze-ui/svelte-icon/types';
+
 export interface CloudMenuItem {
     title: string;
     summary: string;
@@ -8,22 +10,9 @@ export interface CloudMenuItem {
 
 export interface NavItem {
     name: string;
-    icon?: any;
+    icon?: IconSource;
     component: any;
     to: string;
     description?: string;
     default?: boolean;
-}
-
-export interface AppConfig {
-    title: string;
-    basePath: string;
-    navMode: string;
-    navItems: NavItem[];
-    allowNavToggle: boolean;
-    displayLogo: boolean;
-    displayCloudMenu: boolean;
-    displayUserMenu: boolean;
-    thinNavbar: boolean;
-    darkByDefault: boolean;
 }
