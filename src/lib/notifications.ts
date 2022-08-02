@@ -3,7 +3,7 @@ import type { Writable } from 'svelte/store';
 
 const DEFAULT_DURATION = 3000;
 
-type Notification = {
+export type Notification = {
   id?: string,
   type?: string,
   title: string,
