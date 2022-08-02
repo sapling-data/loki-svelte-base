@@ -7,8 +7,8 @@
   export let icon: IconSource;
   export let name: string;
   export let minimal: boolean;
-  export let navMode: string;
-  export let thinNavbar: boolean;
+  export let navMode: string = 'sidebar';
+  export let thinNavbar: boolean = false;
 </script>
 
 <Link

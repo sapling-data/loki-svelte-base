@@ -13,8 +13,8 @@
   const menuItems: CloudMenuItem[] = loadMenu();
   export let title: string;
   export let displayCloudMenu: boolean;
-  export let thinNavbar: boolean;
-  export let navMode: string;
+  export let thinNavbar: boolean = false;
+  export let navMode: string = 'sidebar';
   export let minimal: boolean;
 </script>
 
