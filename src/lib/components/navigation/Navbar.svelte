@@ -4,7 +4,7 @@
   import CloudMenu from '../menus/CloudMenu.svelte';
   import UserMenu from '../menus/UserMenu.svelte';
   import NavLink from './NavLink.svelte';
-  import Logo from "./Logo.svelte";
+  import Logo from './Logo.svelte';
   export let navItems: NavItem[];
   export let title: string;
   export let displayUserMenu: boolean;
