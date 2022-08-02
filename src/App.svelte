@@ -3,9 +3,9 @@
   import { fly } from 'svelte/transition';
   import { Router, Route, navigate } from 'svelte-routing';
   import { QueryClient, QueryClientProvider } from '@sveltestack/svelte-query';
-  import {Icon} from "@steeze-ui/svelte-icon";
-  import {SidebarExpand} from "@steeze-ui/octicons";
-  import Notifications from "./lib/components/Notifications.svelte";
+  import { Icon } from '@steeze-ui/svelte-icon';
+  import { SidebarExpand } from '@steeze-ui/octicons';
+  import Notifications from './lib/components/notifications/Notifications.svelte';
   import Sidebar from './lib/components/navigation/Sidebar.svelte';
   import Navbar from './lib/components/navigation/Navbar.svelte';
   import Workflow from './lib/pages/Workflow.svelte';
