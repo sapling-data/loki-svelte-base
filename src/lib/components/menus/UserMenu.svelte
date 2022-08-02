@@ -3,10 +3,10 @@
     Popover,
     PopoverButton,
     PopoverPanel
-  } from "@rgossiaux/svelte-headlessui";
+  } from '@rgossiaux/svelte-headlessui';
   import { createPopperActions } from 'svelte-popperjs';
-  import {Briefcase, ChevronDown, Logout, User} from "@steeze-ui/heroicons";
-  import {Icon} from "@steeze-ui/svelte-icon";
+  import { Briefcase, ChevronDown, Logout, User } from '@steeze-ui/heroicons';
+  import { Icon } from '@steeze-ui/svelte-icon';
   const [popperRef] = createPopperActions();
   export let navMode: string;
   export let minimal: boolean;
