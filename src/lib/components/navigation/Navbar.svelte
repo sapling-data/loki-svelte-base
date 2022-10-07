@@ -33,13 +33,23 @@
           <div class="flex items-center space-x-2">
             <Router>
               {#each navItems as item}
-                <NavLink
-                        to={item.to}
-                        icon={item.icon}
-                        name={item.name}
-                        {thinNavbar}
-                        navMode="navbar"
-                />
+                {#if !item.hasOwnProperty('guard')}
+                  <NavLink
+                          to={item.to}
+                          icon={item.icon}
+                          name={item.name}
+                          {thinNavbar}
+                          navMode="navbar"
+                  />
+                {:else if item.guard()}
+                  <NavLink
+                          to={item.to}
+                          icon={item.icon}
+                          name={item.name}
+                          {thinNavbar}
+                          navMode="navbar"
+                  />
+                {/if}
               {/each}
             </Router>
           </div>
