@@ -15,4 +15,5 @@ export interface NavItem {
     to: string;
     description?: string;
     default?: boolean;
+    guard?: () => boolean;
 }
