@@ -10,6 +10,7 @@
   export let title: string;
   export let show: boolean = false;
   export let allowNavToggle: boolean;
+  export let allowNavClose: boolean;
   export let displayCloudMenu: boolean;
   export let displayUserMenu: boolean;
   export let displayLogo: boolean;
@@ -18,7 +19,7 @@
 
 {#if show}
   <div
-          class="bg-gray-100 dark:bg-gray-900 border-r-[1px] border-gray-300 dark:border-gray-800 flex flex-col" id="sidebar"
+          class="bg-gray-100 dark:bg-gray-900 border-r-[1px] border-gray-300 dark:border-gray-800 flex flex-col pb-2" id="sidebar"
   >
     <div class="flex flex-col h-0 flex-1 pt-2 {minimal ? 'w-12' : 'w-56 min-w-max'}">
       {#if displayLogo}
@@ -38,12 +39,21 @@
           <div>
             <Router>
               {#each navItems as item}
-                <NavLink
-                        to={item.to}
-                        icon={item.icon}
-                        name={item.name}
-                        {minimal}
-                />
+                {#if !item.hasOwnProperty('guard')}
+                  <NavLink
+                          to={item.to}
+                          icon={item.icon}
+                          name={item.name}
+                          {minimal}
+                  />
+                {:else if item.guard()}
+                  <NavLink
+                          to={item.to}
+                          icon={item.icon}
+                          name={item.name}
+                          {minimal}
+                  />
+                {/if}
               {/each}
             </Router>
           </div>
@@ -52,6 +62,7 @@
               <NavToggle
                       bind:show={show}
                       bind:minimal={minimal}
+                      bind:allowClose={allowNavClose}
               />
             {/if}
             {#if displayUserMenu}
