@@ -3,13 +3,9 @@ import Welcome from './pages/Welcome.svelte';
 import { BookOpen, Home } from '@steeze-ui/heroicons';
 import Index from './pages/Index.svelte';
 import type { NavItem } from './types';
+import Docs from "./pages/Docs.svelte";
 
-const basePath: string =
-  import.meta.env.MODE === 'development'
-    ? `/${lokiConfig.appName}/pages/urn/com/${lokiConfig.cloudName}/${lokiConfig.appModelName}/app/pages/${lokiConfig.pageName}/v`
-    : `/${loki.urn.getLastSegment(loki.app.appInstanceUrn)}/pages/urn/com/${
-        lokiConfig.appRoot
-      }/${lokiConfig.appModelName}/app/pages/${lokiConfig.pageName}/v`;
+const basePath: string = import.meta.env.MODE === 'development' ? `/${lokiConfig.appName}/dashboard/` : `/${loki.urn.getLastSegment(loki.app.appInstanceUrn)}/dashboard/`;
 
 interface AppConfig {
   title: string;
@@ -17,6 +13,7 @@ interface AppConfig {
   navMode: string;
   navItems: NavItem[];
   allowNavToggle: boolean;
+  allowNavClose: boolean;
   displayLogo: boolean;
   displayCloudMenu: boolean;
   displayUserMenu: boolean;
@@ -29,11 +26,12 @@ export const appConfig: AppConfig = {
   title: lokiConfig.pageTitle,
   navMode: 'sidebar',
   allowNavToggle: true,
+  allowNavClose: false,
   displayLogo: true,
   displayCloudMenu: true,
-  displayUserMenu: true,
+  displayUserMenu: false,
   thinNavbar: false,
-  darkByDefault: true,
+  darkByDefault: false,
   navItems: [
     {
       name: 'Welcome',
@@ -46,6 +44,12 @@ export const appConfig: AppConfig = {
       name: 'Index',
       to: `${basePath}/workflows`,
       component: Index,
+      icon: BookOpen,
+    },
+    {
+      name: 'Docs',
+      to: `${basePath}/docs`,
+      component: Docs,
       icon: BookOpen,
     },
   ],
