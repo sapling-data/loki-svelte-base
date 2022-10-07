@@ -11,10 +11,11 @@
   export let navMode: string;
   export let minimal: boolean;
   export let thinNavbar: boolean;
-  let userData = loki.user?.getUserData() || {
+  let userData = import.meta.env.MODE === 'development' ? {
     urn: 'urn:com:saplingdata:domain:security:users:testUser',
     name: 'Test User'
-  };
+  } : loki.user?.getUserData();
+
   const getInitials = (name) => {
     const parts = name.split(' ')
     let initials = '';
@@ -32,7 +33,7 @@
       href: '/'
     },
     {
-      title: 'Profile',
+      title: 'System Info',
       icon: Briefcase,
       href: '/'
     },
