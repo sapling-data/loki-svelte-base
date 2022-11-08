@@ -29,6 +29,8 @@ to install the necessary packages.
 This starter has already been initialized with the following packages and tools:<br>
 :white_check_mark: Svelte 3<br>
 :white_check_mark: svelte-routing (configured with a basic example router)<br>
+:white_check_mark: svelte-query (configured with basic examples)<br>
+:white_check_mark: zod (configured with basic examples)<br>
 :white_check_mark: Linting on save using ESLint and the Airbnb style guide<br>
 </p>
 <br>
