@@ -5,7 +5,7 @@ Loki Svelte + Vite Starter is a simple way to fast-forward through the setup of 
 ## Quick Start
 Here's how to get code into a Loki cloud ASAP:
 - Create a new page in App Builder with an appropriate security function. Add a blank `index.html` file and set it as the default for the page.
-- Create a new repo using the loki-vite-starter template
+- Create a new repo using the loki-svelte-base template
 - Clone your new repo and run `npm install`
 - Fill out the information in `loki.config.mjs`
 - Create a `.env` file in your project root with the [appropriate credentials](https://github.com/sapling-data/loki-sveltee-starter#environment-variables) for the environment you'll be deploying to.
