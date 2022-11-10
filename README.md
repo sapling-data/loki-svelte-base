@@ -76,7 +76,7 @@ export default {
 Please make sure you update this information correctly, since it will be used to construct the API endpoints for deploying your code. It is recommended to set up a page in Loki's App Builder (along with an appropriate security model) for your Svelte app to deploy to **before** configuring your Svelte app.
 
 #### Environment variables
-Deploying to Loki requires providing access to valid Loki credentials via environment variables. Add a [.env file to your project root and use dotenv](https://github.com/motdotla/dotenv#readme) to accomplish this. Use `LOKI_USERNAME`, `LOKI_PASSWORD`, `VITE_LOKI_USERNAME`, and `VITE_LOKI_PASSWORD` as your variable names.
+Deploying to Loki requires providing access to valid Loki credentials via environment variables. Add a [.env file to your project root and use dotenv](https://github.com/motdotla/dotenv#readme) to accomplish this. Use `LOKI_USERNAME`, `LOKI_PASSWORD`, `VITE_LOKI_USERNAME`, and `VITE_LOKI_PASSWORD` as your variable names. `.env.example` has been included as a template.
 <br>
 <br>
 :warning: You will need to supply your credentials twice in your `.env` file, since the same credentials are used to authenticate `loki-javascript-client` inside of Vite as well as the uploadToLoki script outside of Vite.
