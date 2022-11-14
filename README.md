@@ -29,7 +29,7 @@ to install the necessary packages.
 
 - Install Node.js: https://nodejs.org/en/download/
 - Install a CORS plugin in your browser to allow cross domain AJAX calls
--- Chrome CORS plugin: https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en
+  - Chrome CORS plugin: https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en
 
 ## Usage
 <p>
