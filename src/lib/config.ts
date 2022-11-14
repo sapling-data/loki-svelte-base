@@ -5,7 +5,7 @@ import Index from './pages/Index.svelte';
 import type { NavItem } from './types';
 import Docs from "./pages/Docs.svelte";
 
-const basePath: string = import.meta.env.MODE === 'development' ? `/${lokiConfig.appName}/dashboard/` : `/${loki.urn.getLastSegment(loki.app.appInstanceUrn)}/dashboard/`;
+const basePath: string = import.meta.env.MODE === 'development' ? `/${lokiConfig.appName}/dashboard` : `/${loki.urn.getLastSegment(loki.app.appInstanceUrn)}/dashboard`;
 
 interface AppConfig {
   title: string;
